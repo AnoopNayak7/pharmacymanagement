@@ -1,0 +1,23 @@
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  .input-container input,
+  .input-container textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.2s;
+  }
+  
+  .input-container input:focus,
+  .input-container textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+  
