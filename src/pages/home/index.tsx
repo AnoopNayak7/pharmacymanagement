@@ -14,14 +14,14 @@ const index = () => {
         <div className=''>
             <div className='bg-primary-white xl:p-7 p-5 sm:p-6'>
                 <div className='container'>
-                    <div className='text-black text-center xl:text-3xl text-sm font-bold'>Get Highest Quality <br/>Medicines at Lowest cost</div>
+                    <div className='text-black text-center xl:text-3xl text-2xl font-bold'>Get Highest Quality <br/>Medicines at Lowest cost</div>
                     <p className='text-center font-sans text-gray-500'>Delivered to your doorstep in hours</p>
-                    <div className='w-[60%] mx-auto'>
+                    <div className='xl:w-[60%] mx-auto'>
                         <InputBox type={'text'} placeholder='Search (ctrl+v)' value={''} onChange={() => { }} />
                     </div>
                 </div>
             </div>
-            <div className='container my-10 '>
+            <div className='container my-10 px-5 xl:px-0'>
                 Some common medicines
             </div>
             <div className='xl:grid xl:grid-cols-5 xl:gap-7 container px-5 xl:px-0'>
