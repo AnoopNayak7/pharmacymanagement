@@ -24,4 +24,4 @@ import {
   }
   
   export const BaseStyles =
-    'bxsdw py-2 px-9 outline-none font-inter flex items-center whitespace-nowrap bg-secondary text-white font-semibold';
+    'bxsdw py-2 px-9 outline-none font-inter flex items-center whitespace-nowrap bg-primary text-white font-semibold';

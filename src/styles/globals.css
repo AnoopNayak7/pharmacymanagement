@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 body{
-  @apply px-5 sm:px-10 xl:px-0
+  @apply sm:px-10 xl:px-0;
+  font-family: 'Days One', sans-serif;
 }
 
 .container{
   @apply sm:mx-[8%] mx-0
+}
+
+.bxsdw{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
