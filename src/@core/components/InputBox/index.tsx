@@ -6,14 +6,14 @@ interface InputBoxProps {
   placeholder?: string;
   name?: string;
   value: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | any>) => void;
   rows?: number;
 }
 
 const InputBox: React.FC<InputBoxProps> = ({ type, placeholder, value, onChange, rows, name }) => {
   const inputProps = {
     type,
-    name, // Keep 'name' in the spread operator
+    name,
     placeholder,
     value,
     onChange,

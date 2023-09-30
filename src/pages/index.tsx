@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux'; 
 import InputBox from '@/@core/components/InputBox';
 import Button from '@/@core/components/Button/button';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 import { notification } from 'antd';
+import { setUser } from '@/store/toolkit/userSlice';
+
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useDispatch(); 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -22,18 +26,23 @@ const Login = () => {
   };
 
   const handleLogin = async (e:any) => {
-    e.preventDefault()
+    e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3000/auth/login', formData, {
         withCredentials: true,
       });
-      const access_token = response.data.data.access_token;
-      if (response.status == 200 && response.data.success) {
+
+      if (response.status === 200 && response.data.success) {
+        const user = response.data.data; 
+        dispatch(setUser(user)); 
+        const access_token = user.access_token; 
         localStorage.setItem('access_token', access_token);
+
         notification.success({
           message: 'Login Successful',
-          description: 'You have successfully loggedin.',
+          description: 'You have successfully logged in.',
         });
+
         router.push('/home');
       } else {
         console.error('Login failed:', response.data.msg);
@@ -45,16 +54,14 @@ const Login = () => {
 
   return (
     <div className='flex justify-between h-[100vh] gap-10 items-center'>
-      <div className='w-[60%] bg-primary h-full hidden xl:block'>
-
-      </div>
-      <div className='w-full xl:w-[40%] xl:px-16'>
+      <div className='w-[60%] bg-primary h-full hidden xl:block'></div>
+      <div className='w-full xl:w-[40%] xl:px-16 px-5'>
         <div className='text-3xl'>Login to your account</div>
         <p className='text-sm text-gray-500 mt-3'>Login to access your healthcare dashboard. Explore appointments, manage tasks, and oversee records</p>
         <form onSubmit={handleLogin}>
-        <InputBox type={'email'} name='email' value={formData.email} placeholder='Enter your email' onChange={handleInputChange} />
-        <InputBox type={'password'} name='password' value={formData.password} placeholder='Enter your password' onChange={handleInputChange} />
-        <Button>Login</Button>
+          <InputBox type={'email'} name='email' value={formData.email} placeholder='Enter your email' onChange={handleInputChange} />
+          <InputBox type={'password'} name='password' value={formData.password} placeholder='Enter your password' onChange={handleInputChange} />
+          <Button>Login</Button>
         </form>
         <p className='text-sm text-gray-500 mt-3'>Don't have an account? <Link className='text-primary font-semibold' href={'/register'}>SignUp here</Link></p>
       </div>
