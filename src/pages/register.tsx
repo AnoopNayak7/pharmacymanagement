@@ -44,10 +44,10 @@ const register = () => {
 
   return (
     <div className='flex justify-between h-[100vh] gap-10 items-center'>
-      <div className='w-[60%] bg-primary h-full'>
+      <div className='w-[60%] bg-primary h-full hidden xl:block'>
 
       </div>
-      <div className='w-[40%] px-16'>
+      <div className='w-full xl:w-[40%] px-5 xl:px-16'>
         <div className='text-3xl'>Register</div>
         <p className='text-sm text-gray-500 mt-3'>Already have an account? <Link className='text-primary font-semibold' href={'/'}>SignIn here</Link></p>
         <form onSubmit={handleRegister}>
